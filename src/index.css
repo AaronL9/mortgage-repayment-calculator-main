@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .p-fluid {
+    padding: clamp(1.125rem, 2vw + 1rem, 2.25rem);
+  }
+
+  .p-fluid-sm {
+    padding: clamp(1rem, 2vw + 0.75rem, 2rem);
+  }
+
+  .gap-fluid-sm {
+    gap: clamp(1rem, 2vw + 0.75rem, 1.75rem);
+  }
+
+  .text-fluid {
+    font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+  }
+}
