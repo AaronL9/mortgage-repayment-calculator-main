@@ -35,7 +35,7 @@ export default function Calculator() {
     });
 
     setIsValidated(false);
-
+    setResult(null);
     setMortgageInputValidation(defaultInputValidation);
 
     radioBtnRepayments.current.checked = false;
@@ -110,6 +110,7 @@ export default function Calculator() {
             utilInputClasses={"flex-row-reverse justify-end"}
             utilInputContainerClasses={"col-span-full"}
             isValid={mortgageInputValidation["mortgageAmount"]}
+            max={999999999}
           />
           <Input
             id={"mortgage-term"}
@@ -117,6 +118,7 @@ export default function Calculator() {
             symbol={"years"}
             utilInputClasses={"justify-between pl-4"}
             isValid={mortgageInputValidation["mortgageTerm"]}
+            max={45}
           />
           <Input
             id={"interest-rate"}
@@ -124,6 +126,7 @@ export default function Calculator() {
             symbol={"%"}
             utilInputClasses={"justify-between pl-4"}
             isValid={mortgageInputValidation["interestRate"]}
+            max={100}
           />
           <fieldset className="col-span-full grid gap-2">
             <legend className="mb-1 flex gap-3 text-base font-semibold text-slate-700">

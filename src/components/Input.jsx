@@ -1,6 +1,10 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MortgageContext } from "../App";
-import { capitalize } from "../helpers/stringFormatter";
+import {
+  capitalize,
+  formatNumberWithoutSymbol,
+  parseFormattedNumber,
+} from "../helpers/stringFormatter";
 
 export default function Input({
   id,
@@ -9,14 +13,28 @@ export default function Input({
   utilInputClasses,
   utilInputContainerClasses,
   isValid = true,
+  max,
 }) {
   const { setMortgageInput, mortgageInput } = useContext(MortgageContext);
+  const [amount, setAmount] = useState("");
 
   const name = id.split("-");
   const key = `${name[0]}${capitalize(name[1])}`;
 
   function inputHandler(e) {
-    setMortgageInput((prev) => ({ ...prev, [key]: e.target.value }));
+    let value = e.target.value;
+
+    if (key === "mortgageAmount") value = parseFormattedNumber(value);
+
+    if (isNaN(value)) return;
+    if (Number(value) > max) return;
+
+    if (key === "mortgageAmount") {
+      let amount = !!value ? formatNumberWithoutSymbol(value, "en-us") : "";
+      setAmount(amount);
+    }
+
+    setMortgageInput((prev) => ({ ...prev, [key]: value }));
   }
 
   const inputBorder = !isValid ? "border-red" : "border-slate-500";
@@ -38,9 +56,10 @@ export default function Input({
           <input
             className="peer min-h-full w-full font-bold"
             id={id}
-            type="number"
+            type="text"
             onChange={inputHandler}
-            value={mortgageInput[key]}
+            value={key === "mortgageAmount" ? amount : mortgageInput[key]}
+            autocomplete="off"
           />
           <span
             className={`flex items-center ${symbolBackground} px-4 text-lg font-bold ${symbolColor} focus-within:bg-lime-400 peer-focus:bg-lime-400 peer-focus:text-slate-900`}

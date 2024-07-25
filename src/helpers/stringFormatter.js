@@ -11,3 +11,19 @@ export function formatCurrencyWithSuffix(number) {
     .replace("$", "£")
     .replace(lastChar, lastChar.toUpperCase());
 }
+
+export function formatNumberWithoutSymbol(number, locale) {
+  const formatter = new Intl.NumberFormat(locale, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  });
+
+  return formatter.format(number);
+}
+
+export function parseFormattedNumber(formattedNumber) {
+  const cleanedNumber = formattedNumber.replace(/[^\d.-]/g, "");
+  const number = parseFloat(cleanedNumber);
+
+  return isNaN(number) ? null : number;
+}
