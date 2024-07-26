@@ -39,7 +39,7 @@ export default function Input({
 
   const inputBorder = !isValid ? "border-red" : "border-slate-500";
   const symbolBackground = !isValid ? "bg-red" : "bg-slate-100";
-  const symbolColor = !isValid ? "text-white" : "slate-700";
+  const symbolColor = !isValid ? "text-white" : "text-slate-700";
 
   return (
     <>

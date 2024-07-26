@@ -10,7 +10,7 @@ export default function RadioBtn({ id, label, radioBtnRef }) {
 
   return (
     <label
-      className="flex min-h-12.5 w-full items-center gap-3 rounded border border-slate-500 font-bold capitalize text-slate-900 hover:border-lime-400 has-[:checked]:border-lime-400 has-[:checked]:bg-lime-200"
+      className="flex min-h-12.5 w-full items-center gap-4 rounded border border-slate-500 font-bold capitalize text-slate-900 hover:border-lime-400 has-[:checked]:border-lime-400 has-[:checked]:bg-lime-200"
       htmlFor={id}
     >
       <input

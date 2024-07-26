@@ -149,7 +149,7 @@ export default function Calculator() {
         </div>
         <button
           onClick={onCalculate}
-          className="mt-9 flex h-14 w-full max-w-80 items-center justify-center gap-2 rounded-full bg-lime-400 text-lg font-bold max-[450px]:max-w-full"
+          className="mt-9 flex h-14 w-full max-w-80 items-center justify-center gap-3 rounded-full bg-lime-400 text-lg font-bold text-slate-900 max-[450px]:max-w-full"
         >
           <img aria-hidden src="/icon-calculator.svg" alt="calculator icon" />
           Calculate Repayments
