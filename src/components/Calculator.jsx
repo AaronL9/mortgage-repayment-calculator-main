@@ -21,6 +21,7 @@ export default function Calculator() {
   const radioBtnRepayments = useRef(null);
   const radioBtnIntereset = useRef(null);
 
+  const [amount, setAmount] = useState("");
   const [isValidated, setIsValidated] = useState(false);
   const [mortgageInputValidation, setMortgageInputValidation] = useState(
     defaultInputValidation,
@@ -34,8 +35,9 @@ export default function Calculator() {
       mortgageType: "",
     });
 
-    setIsValidated(false);
     setResult(null);
+    setAmount("");
+    setIsValidated(false);
     setMortgageInputValidation(defaultInputValidation);
 
     radioBtnRepayments.current.checked = false;
@@ -111,6 +113,8 @@ export default function Calculator() {
             utilInputContainerClasses={"col-span-full"}
             isValid={mortgageInputValidation["mortgageAmount"]}
             max={999999999}
+            amount={amount}
+            setAmount={setAmount}
           />
           <Input
             id={"mortgage-term"}

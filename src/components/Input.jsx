@@ -12,11 +12,12 @@ export default function Input({
   symbol,
   utilInputClasses,
   utilInputContainerClasses,
-  isValid = true,
   max,
+  isValid = true,
+  amount = 0,
+  setAmount = () => {},
 }) {
   const { setMortgageInput, mortgageInput } = useContext(MortgageContext);
-  const [amount, setAmount] = useState("");
 
   const name = id.split("-");
   const key = `${name[0]}${capitalize(name[1])}`;
